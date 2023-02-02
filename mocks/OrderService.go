@@ -42,18 +42,18 @@ func (_m *OrderService) Confirm(token interface{}, orderID uint) error {
 }
 
 // Create provides a mock function with given fields: token, carts
-func (_m *OrderService) Create(token interface{}, carts []order.Cart) (order.Core, error) {
+func (_m *OrderService) Create(token interface{}, carts []int) (order.Core, error) {
 	ret := _m.Called(token, carts)
 
 	var r0 order.Core
-	if rf, ok := ret.Get(0).(func(interface{}, []order.Cart) order.Core); ok {
+	if rf, ok := ret.Get(0).(func(interface{}, []int) order.Core); ok {
 		r0 = rf(token, carts)
 	} else {
 		r0 = ret.Get(0).(order.Core)
 	}
 
 	var r1 error
-	if rf, ok := ret.Get(1).(func(interface{}, []order.Cart) error); ok {
+	if rf, ok := ret.Get(1).(func(interface{}, []int) error); ok {
 		r1 = rf(token, carts)
 	} else {
 		r1 = ret.Error(1)
@@ -125,6 +125,20 @@ func (_m *OrderService) GetOrderSell(token interface{}, orderID uint) (order.Cor
 	}
 
 	return r0, r1
+}
+
+// UpdateStatus provides a mock function with given fields: invoice, status, paidAt
+func (_m *OrderService) UpdateStatus(invoice string, status string, paidAt string) error {
+	ret := _m.Called(invoice, status, paidAt)
+
+	var r0 error
+	if rf, ok := ret.Get(0).(func(string, string, string) error); ok {
+		r0 = rf(invoice, status, paidAt)
+	} else {
+		r0 = ret.Error(0)
+	}
+
+	return r0
 }
 
 type mockConstructorTestingTNewOrderService interface {

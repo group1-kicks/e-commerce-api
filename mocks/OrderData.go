@@ -28,18 +28,18 @@ func (_m *OrderData) Confirm(orderID uint, updateOrder order.Core) error {
 }
 
 // CreateOrder provides a mock function with given fields: userID, _a1, carts
-func (_m *OrderData) CreateOrder(userID uint, _a1 order.Core, carts []order.Cart) (uint, error) {
+func (_m *OrderData) CreateOrder(userID uint, _a1 order.Core, carts []int) (uint, error) {
 	ret := _m.Called(userID, _a1, carts)
 
 	var r0 uint
-	if rf, ok := ret.Get(0).(func(uint, order.Core, []order.Cart) uint); ok {
+	if rf, ok := ret.Get(0).(func(uint, order.Core, []int) uint); ok {
 		r0 = rf(userID, _a1, carts)
 	} else {
 		r0 = ret.Get(0).(uint)
 	}
 
 	var r1 error
-	if rf, ok := ret.Get(1).(func(uint, order.Core, []order.Cart) error); ok {
+	if rf, ok := ret.Get(1).(func(uint, order.Core, []int) error); ok {
 		r1 = rf(userID, _a1, carts)
 	} else {
 		r1 = ret.Error(1)
@@ -48,8 +48,8 @@ func (_m *OrderData) CreateOrder(userID uint, _a1 order.Core, carts []order.Cart
 	return r0, r1
 }
 
-// GetByID provides a mock function with given fields: userID, orderID
-func (_m *OrderData) GetByID(userID uint, orderID uint) (order.Core, error) {
+// GetOrderBuy provides a mock function with given fields: userID, orderID
+func (_m *OrderData) GetOrderBuy(userID uint, orderID uint) (order.Core, error) {
 	ret := _m.Called(userID, orderID)
 
 	var r0 order.Core
@@ -69,8 +69,8 @@ func (_m *OrderData) GetByID(userID uint, orderID uint) (order.Core, error) {
 	return r0, r1
 }
 
-// GetItemBuy provides a mock function with given fields: userID, orderID
-func (_m *OrderData) GetItemBuy(userID uint, orderID uint) (order.Core, error) {
+// GetOrderSell provides a mock function with given fields: userID, orderID
+func (_m *OrderData) GetOrderSell(userID uint, orderID uint) (order.Core, error) {
 	ret := _m.Called(userID, orderID)
 
 	var r0 order.Core
@@ -90,29 +90,8 @@ func (_m *OrderData) GetItemBuy(userID uint, orderID uint) (order.Core, error) {
 	return r0, r1
 }
 
-// GetItemSell provides a mock function with given fields: userID, orderID
-func (_m *OrderData) GetItemSell(userID uint, orderID uint) (order.Core, error) {
-	ret := _m.Called(userID, orderID)
-
-	var r0 order.Core
-	if rf, ok := ret.Get(0).(func(uint, uint) order.Core); ok {
-		r0 = rf(userID, orderID)
-	} else {
-		r0 = ret.Get(0).(order.Core)
-	}
-
-	var r1 error
-	if rf, ok := ret.Get(1).(func(uint, uint) error); ok {
-		r1 = rf(userID, orderID)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// GetListOrderBuy provides a mock function with given fields: userID
-func (_m *OrderData) GetListOrderBuy(userID uint) ([]order.Core, error) {
+// ListOrderBuy provides a mock function with given fields: userID
+func (_m *OrderData) ListOrderBuy(userID uint) ([]order.Core, error) {
 	ret := _m.Called(userID)
 
 	var r0 []order.Core
@@ -134,8 +113,8 @@ func (_m *OrderData) GetListOrderBuy(userID uint) ([]order.Core, error) {
 	return r0, r1
 }
 
-// GetListOrderSell provides a mock function with given fields: userID
-func (_m *OrderData) GetListOrderSell(userID uint) ([]order.Core, error) {
+// ListOrderSell provides a mock function with given fields: userID
+func (_m *OrderData) ListOrderSell(userID uint) ([]order.Core, error) {
 	ret := _m.Called(userID)
 
 	var r0 []order.Core
@@ -157,13 +136,13 @@ func (_m *OrderData) GetListOrderSell(userID uint) ([]order.Core, error) {
 	return r0, r1
 }
 
-// Update provides a mock function with given fields: userID, orderID, updateOrder
-func (_m *OrderData) Update(userID uint, orderID uint, updateOrder order.Core) error {
-	ret := _m.Called(userID, orderID, updateOrder)
+// UpdateStatus provides a mock function with given fields: invoice, updateOrder
+func (_m *OrderData) UpdateStatus(invoice string, updateOrder order.Core) error {
+	ret := _m.Called(invoice, updateOrder)
 
 	var r0 error
-	if rf, ok := ret.Get(0).(func(uint, uint, order.Core) error); ok {
-		r0 = rf(userID, orderID, updateOrder)
+	if rf, ok := ret.Get(0).(func(string, order.Core) error); ok {
+		r0 = rf(invoice, updateOrder)
 	} else {
 		r0 = ret.Error(0)
 	}
